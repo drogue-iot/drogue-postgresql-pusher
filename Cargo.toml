@@ -1,0 +1,37 @@
+[package]
+name = "drogue-postgresql-pusher"
+version = "0.1.0"
+edition = "2018"
+authors = ["Jens Reimann <jreimann@redhat.com>"]
+license = "Apache-2.0"
+
+[dependencies]
+
+anyhow = "1"
+config = "0.11"
+thiserror = "1"
+env_logger = "0.7"
+log = "0.4"
+
+async-trait = "0.1"
+actix-web = "=4.0.0-beta.8" # we need v4 as we need tokio 1
+futures = "0.3"
+futures-core = "0.3"
+futures-util = "0.3"
+cloudevents-sdk = { version = "0.4", features = ["actix", "reqwest"] }
+
+tokio = { version = "1", features = ["full"] }
+deadpool = "0.7"
+deadpool-postgres = { version = "0.7", features = ["config"] }
+tokio-postgres = { version = "0.7", features = ["runtime", "with-chrono-0_4"] }
+chrono = "0.4"
+jsonpath_lib = "0.2.6"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rust_decimal = { version = "1", features = ["db-tokio-postgres"] }
+
+[patch.crates-io]
+cloudevents-sdk = { git = "https://github.com/cloudevents/sdk-rust", branch = "actix-web-4.0.0-beta.8" } # FIXME: pre-release branch
+
+[profile.release]
+#lto=true
