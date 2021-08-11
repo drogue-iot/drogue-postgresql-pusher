@@ -46,12 +46,15 @@ impl Processor {
                 log::debug!("Adding tag - {} -> {}", tag, value);
                 let compiled = jsonpath_lib::Compiled::compile(&value)
                     .map_err(|err| anyhow::anyhow!("Failed to parse JSON path: {}", err))?;
+
+                // find expected type for the tag
+                let expected_type = std::env::var(format!("TYPE_TAG_{}", tag)).try_into()?;
                 tags.insert(
                     tag.to_lowercase(),
                     Path {
                         path: value,
                         compiled,
-                        r#type: ExpectedType::None,
+                        r#type: expected_type,
                     },
                 );
             }
@@ -70,7 +73,6 @@ impl Processor {
         let json = parse_payload(data)?;
         let timestamp = event.time().cloned().unwrap_or_else(Utc::now);
 
-        // let query = timestamp.into_query(processor.table.clone());
         let insertion = self.writer.new_insertion(timestamp).await?;
 
         // process values with payload only
