@@ -34,4 +34,4 @@ rust_decimal = { version = "1", features = ["db-tokio-postgres"] }
 cloudevents-sdk = { git = "https://github.com/cloudevents/sdk-rust", branch = "actix-web-4.0.0-beta.8" } # FIXME: pre-release branch
 
 [profile.release]
-#lto=true
+lto=true
