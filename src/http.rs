@@ -4,7 +4,7 @@ use cloudevents::Event;
 use serde::Deserialize;
 
 #[derive(Clone, Debug, Deserialize)]
-pub struct ActixConfig {
+pub struct EndpointConfig {
     #[serde(default = "default_max_json_payload_size")]
     pub max_json_payload_size: usize,
     #[serde(default = "default_bind_addr")]
@@ -16,7 +16,7 @@ pub struct ActixConfig {
     pub token: Option<String>,
 }
 
-impl Default for ActixConfig {
+impl Default for EndpointConfig {
     fn default() -> Self {
         Self {
             max_json_payload_size: default_max_json_payload_size(),
