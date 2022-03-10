@@ -9,6 +9,11 @@ pub struct ActixConfig {
     pub max_json_payload_size: usize,
     #[serde(default = "default_bind_addr")]
     pub bind_addr: String,
+
+    pub username: Option<String>,
+    pub password: Option<String>,
+
+    pub token: Option<String>,
 }
 
 impl Default for ActixConfig {
@@ -16,6 +21,9 @@ impl Default for ActixConfig {
         Self {
             max_json_payload_size: default_max_json_payload_size(),
             bind_addr: default_bind_addr(),
+            username: None,
+            password: None,
+            token: None,
         }
     }
 }
