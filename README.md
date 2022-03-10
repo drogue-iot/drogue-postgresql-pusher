@@ -26,18 +26,21 @@ The application expects a JSON payload structure, from which it extracts fields 
 
 You can use the following environment variables to configure its behavior:
 
-| Name | Required | Default | Description |
-| ---- | -------- | ------- | ----------- |
-| `DISABLE_TRY_PARSE` | | `false` | Disable trying to parse expected value from String format |
-| `RUST_LOG` | | none | The configuration of the logger, also see https://docs.rs/env_logger/latest/env_logger/ |
-| `ACTIX__BIND_ADDR` | | `127.0.0.1:8080` | The address the HTTP server binds to |
-| `ACTIX__MAX_JSON_PAYLOAD_SIZE` | | `65536` | Maximum payload size for JSON |
-| `POSTGRESQL__TABLE` | x | none | The table to write to |
-| `POSTGRESQL__TIME_COLUMN` | x | none | The column to receive the timestamp |
-| `POSTGRESQL__CONNECTION__HOST` | x | none | The hostname (or IP address) of the PostgreSQL instance |
-| `POSTGRESQL__CONNECTION__USER` | x | none | The username to use for authenticating to the database |
-| `POSTGRESQL__CONNECTION__PASSWORD` | x | none | The password to use for authenticating to the database |
-| `POSTGRESQL__CONNECTION__DBNAME` | x | none | The database to use |
+| Name                               | Required | Default          | Description                                                                            |
+|------------------------------------| -------- |------------------|----------------------------------------------------------------------------------------|
+| `DISABLE_TRY_PARSE`                | | `false`          | Disable trying to parse expected value from String format                              |
+| `RUST_LOG`                         | | none             | The configuration of the logger, also see https://docs.rs/env_logger/latest/env_logger/ |
+| `ENDPOINT__BIND_ADDR`              | | `127.0.0.1:8080` | The address the HTTP server binds to                                                   |
+| `ENDPOINT__MAX_JSON_PAYLOAD_SIZE`  | | `65536`          | Maximum payload size for JSON                                                          |
+| `ENDPOINT__TOKEN`                  | | none             | A bearer token the caller has to provide                                               |
+| `ENDPOINT__USERNAME`               | | none             | A username the caller has to provide (requires "password" too)                         |
+| `ENDPOINT__PASSWORD`               | | none             | The password for the username                                                          |
+| `POSTGRESQL__TABLE`                | x | none             | The table to write to                                                                  |
+| `POSTGRESQL__TIME_COLUMN`          | x | none             | The column to receive the timestamp                                                    |
+| `POSTGRESQL__CONNECTION__HOST`     | x | none             | The hostname (or IP address) of the PostgreSQL instance                                |
+| `POSTGRESQL__CONNECTION__USER`     | x | none             | The username to use for authenticating to the database                                 |
+| `POSTGRESQL__CONNECTION__PASSWORD` | x | none             | The password to use for authenticating to the database                                 |
+| `POSTGRESQL__CONNECTION__DBNAME`   | x | none             | The database to use                                                                    |
 
 #### Tags and fields
 
