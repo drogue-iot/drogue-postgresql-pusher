@@ -1,6 +1,6 @@
 [package]
 name = "drogue-postgresql-pusher"
-version = "0.2.0"
+version = "0.2.1"
 edition = "2018"
 authors = ["Jens Reimann <jreimann@redhat.com>"]
 license = "Apache-2.0"
